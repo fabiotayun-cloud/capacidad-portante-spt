@@ -6,6 +6,7 @@ import {
   getSamplerCorrectionFactor, getRodLengthCorrectionFactor,
 } from './utils/sptCalculations';
 import { Input, Select, Card, Pill, Toggle, FormulaBox, FormulaResult } from './components/UI';
+import FootingDiagram from './components/FootingDiagram';
 
 /* ── Stepper bar ── */
 const STEPS = [
@@ -404,6 +405,10 @@ function App() {
                 <Input label="Profundidad de desplante (Df)" unit="m" value={Df} onChange={setDf} min={0.3} max={10} step={0.1} />
                 <Input label="Factor de seguridad (FS)" value={fs} onChange={setFs} min={1.5} max={5} step={0.5} />
               </Card>
+              {/* Footing diagram */}
+              <div className="mt-4">
+                <FootingDiagram B={B} Df={Df} shape={shape} waterTableDepth={waterTableDepth} gamma={gamma} />
+              </div>
               {/* Mini summary of previous steps */}
               <div className="mt-4 rounded-xl bg-neutral-900 text-white p-4">
                 <p className="text-[11px] font-bold text-neutral-500 uppercase tracking-wider mb-2">Parametros de pasos anteriores</p>
